@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid">{{ num }}</p>
+        <p v-bind:class="clsName">{{ doubleNum }}</p>
+        <div v-if="loading">Loding...</div>
+        <div v-else>test user has been logged in</div>
+        <div v-show="loading">Loding...</div>
+        <input v-model="message" type="text" placeholder="여기에 메시지를 입력하세요">
+        <p>메시지 : {{ message }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                uuid: 'abc1234',
+                clsName: 'text-blue',
+                loading: true,
+                message: ''
+            },
+            computed: {
+                doubleNum: function () {
+                    return this.num * 2;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
