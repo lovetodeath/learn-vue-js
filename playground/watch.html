@@ -9,19 +9,31 @@
 </head>
 <body>
     <div id="app">
-        <button v-on:click="push">click me</button>
-        <input type="text" v-on:keypress.enter="push">
+        <button v-on:click="addNum">increase</button>
+        <div>{{ num }}</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
+            data: {
+                num: 10
+            },
             methods: {
-                push: function () {
-                    console.log('click')
+                addNum: function () {
+                    this.num = this.num + 1;
+                },
+                logText: function () {
+                    console.log('changed');
+                }
+            },
+            watch: {
+                num: function () {
+                    this.logText();
                 }
             }
         });
     </script>
+
 </body>
 </html>
